@@ -2,7 +2,7 @@
 
 
 
-const generateHtml = Data => {
+const generateHtml = newData => {
     return `
     <!DOCTYPE html>
     <html lang="en">

@@ -271,7 +271,7 @@ const init = () => {
 
 
 init()
-    // .then(index => {
-    //     return writeToFile(index)
-    // })
+    .then(index => {
+        return writeToFile(index)
+    })
 
