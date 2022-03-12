@@ -1,17 +1,19 @@
-const fs = require('fs')
-const generateHtml = require('./utils/generateIndexhtml')
-const inquirer = require('inquirer')
-const Engineer = require('./lib/Engineer')
-const Manager = require('./lib/Manager')
-const Intern = require('./lib/Intern')
-const Employee = require('./lib/Employee')
+const fs = require('fs');
+const generateHtml = require('./utils/generateIndexhtml');
+const inquirer = require('inquirer');
+const Engineer = require('./lib/Engineer');
+const Manager = require('./lib/Manager');
+const Intern = require('./lib/Intern');
+const Employee = require('./lib/Employee');
+
+const employee = []
+console.log(employee)
 
 
-const questions = [
+const managerQuestions = [
 
-   
-    //Manager name
-    {
+       //Manager name
+       {
         type: 'input',
         name: 'managerName',
         message: 'What is the name of the team manager?',
@@ -69,7 +71,7 @@ const questions = [
             }
         }
     },
-
+    
     //Manager office
     {
         type: 'input',
@@ -85,22 +87,27 @@ const questions = [
         }
     },
 
+]
+
+const questions = [
+
+   
     // type of team member to add
     {
-            type: 'list',
-            name: 'employeePosition',
-            message: 'What employee position would you like to add?',
-            choices: ['Engineer', 'Intern', 'Quit'],
-            validate: ({ newPosition }) => {
-                if (newPosition) {
-                    return true;
-                } else {
-                    return false;
-                }
+        type: 'list',
+        name: 'employeePosition',
+        message: 'What employee position would you like to add?',
+        choices: ['Engineer', 'Intern', 'Quit'],
+        validate: ({ newPosition }) => {
+            if (newPosition) {
+                return true;
+            } else {
+                return false;
             }
+        }
     },
-
-       // engineer name
+    
+    // engineer name
     {
         type: 'input',
         name: 'engineer',
@@ -111,8 +118,8 @@ const questions = [
             }
         }
     },
-
-      // engineer ID
+    
+    // engineer ID
     {
         type: 'input',
         name: 'engineerID',
@@ -123,8 +130,8 @@ const questions = [
             }
         }
     },
-
-       // engineer email
+    
+    // engineer email
     {
         type: 'input',
         name: 'engineerEmail',
@@ -135,8 +142,8 @@ const questions = [
             }
         }
     },
-
-        // engineer github
+    
+    // engineer github
     {
         type: 'input',
         name: 'engineerGit',
@@ -147,7 +154,7 @@ const questions = [
             }
         }
     },
-
+    
     {
         type: 'confirm',
         name: 'newPosition',
@@ -163,8 +170,8 @@ const questions = [
             }
         }
     },
-
-          // Intern name
+    
+    // Intern name
     {
         type: 'input',
         name: 'intern',
@@ -175,7 +182,7 @@ const questions = [
             }
         }
     },
-
+    
     // Intern ID
     {
         type: 'input',
@@ -187,8 +194,8 @@ const questions = [
             }
         }
     },
-
-      // Intern email
+    
+    // Intern email
     {
         type: 'input',
         name: 'internEmail',
@@ -199,8 +206,8 @@ const questions = [
             }
         }
     },
-
-     // Intern school
+    
+    // Intern school
     {
         type: 'input',
         name: 'internSchool',
@@ -211,48 +218,60 @@ const questions = [
             }
         }
     },
-
-
-    
-
+  
 ];
 
 
-// const writeToFile = data = {
-//     let newData = generateIndexhtml(data)
-//     fs.writeFile('./dist/index.html', newData, function (error) {
-//         if (error) {
-//             return console.log(error);
-//         } else {
-//             console.log("Your index html was created friend!")
-//         }
-//     })
-// }
-
-
-const init = () => {
+const askQuestions = () => {
     inquirer
-        .prompt(questions)
-    .then (data => {
-        return data;
+        .prompt(managerQuestions).then((answer) => {
+                position = new Manager(
+                    answer.managerName,
+                    answer.managerID,
+                    answer.managerEmail,
+                    answer.managerOffice
+                )
+                employee.push(position)
+                console.log(employee)
+            });
+
+            // switch (input) {
+            //     case 'managerName':
+            //     case 'managerID':
+                
+            //     break;
+        
+            // }
+}
+
+
+const writeToFile = data => {
+    let newData = generateHtml(data)
+    fs.writeFile('./dist/index.html', newData, function (error) {
+        if (error) {
+            return console.log(error);
+        } else {
+            console.log("Your index html was created friend!")
+        }
     })
 }
 
 
+const init = () => {
+    askQuestions()
+}
+// const init = () => {
+//     inquirer
+//         .prompt(questions)
+//     .then (data => {
+//         return data;
+//     })
+// }
+
+
 
 init()
-    .then(index => {
-        return writeToFile(index)
-    })
+    // .then(index => {
+    //     return writeToFile(index)
+    // })
 
-
-// const askChoiceQuestions = () => {
-//     prompt(questions).then(({ name })) => {
-//         switch (name) {
-//             case 'input'
-
-//             askChoiceQuestions();
-//             break;
-//         }
-//     });
-// }
