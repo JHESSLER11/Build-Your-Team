@@ -105,6 +105,119 @@ const questions = [
         }
     },
 
+    // type of team member to add
+    {
+            type: 'list',
+            name: 'employeePosition',
+            message: 'What employee position would you like to add?',
+            choices: ['Engineer', 'Intern'],
+            // when: ({ employeePosition }) => {
+            //     if (employeePosition === 'Engineer') {
+            //         return ({ engineer });
+            //     }
+        
+            // }
+    },
+
+       // engineer name
+    {
+        type: 'input',
+        name: 'engineer',
+        message: 'What is the name of the Engineer?',
+        when: (answer) => {
+            if (answer.employeePosition === 'Engineer') {
+                return true;
+            }
+        }
+    },
+
+      // engineer ID
+    {
+        type: 'input',
+        name: 'engineerID',
+        message: 'What is the employee ID of the Engineer?',
+        when: (answer) => {
+            if (answer.employeePosition === 'Engineer') {
+                return true;
+            }
+        }
+    },
+
+       // engineer email
+    {
+        type: 'input',
+        name: 'engineerEmail',
+        message: 'What is the email address of the engineer?',
+        when: (answer) => {
+            if (answer.employeePosition === 'Engineer') {
+                return true;
+            }
+        }
+    },
+
+        // engineer github
+    {
+        type: 'input',
+        name: 'engineerGit',
+        message: 'What is the GitHub username of the engineer?',
+        when: (answer) => {
+            if (answer.employeePosition === 'Engineer') {
+                return true;
+            }
+        }
+    },
+
+          // Intern name
+    {
+        type: 'input',
+        name: 'intern',
+        message: 'What is the Name of the Intern?',
+        when: (answer) => {
+            if (answer.employeePosition === 'Intern') {
+                return true;
+            }
+        }
+    },
+
+    // Intern ID
+    {
+        type: 'input',
+        name: 'internID',
+        message: 'What is the employee ID of the Intern?',
+        when: (answer) => {
+            if (answer.employeePosition === 'Intern') {
+                return true;
+            }
+        }
+    },
+
+      // Intern email
+    {
+        type: 'input',
+        name: 'internEmail',
+        message: 'What is the email of the Intern?',
+        when: (answer) => {
+            if (answer.employeePosition === 'Intern') {
+                return true;
+            }
+        }
+    },
+
+     // Intern school
+    {
+        type: 'input',
+        name: 'internSchool',
+        message: 'What School did the intern attend?',
+        when: (answer) => {
+            if (answer.employeePosition === 'Intern') {
+                return true;
+            }
+        }
+    },
+
+
+    
+
 ];
 
 function init() {
