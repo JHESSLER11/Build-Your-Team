@@ -1,9 +1,9 @@
 const fs = require('fs')
 const inquirer = require('inquirer')
-const Engineer = require('./Engineer')
-const Manager = require('./Manager')
-const Intern = require('./Intern')
-const Employee = require('./Employee')
+const Engineer = require('./lib/Engineer')
+const Manager = require('./lib/Manager')
+const Intern = require('./lib/Intern')
+const Employee = require('./lib/Employee')
 
 
 const questions = [
@@ -111,12 +111,13 @@ const questions = [
             name: 'employeePosition',
             message: 'What employee position would you like to add?',
             choices: ['Engineer', 'Intern'],
-            // when: ({ employeePosition }) => {
-            //     if (employeePosition === 'Engineer') {
-            //         return ({ engineer });
-            //     }
-        
-            // }
+            validate: ({ newPosition }) => {
+                if (newPosition) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
     },
 
        // engineer name
@@ -163,6 +164,22 @@ const questions = [
         when: (answer) => {
             if (answer.employeePosition === 'Engineer') {
                 return true;
+            }
+        }
+    },
+
+    {
+        type: 'confirm',
+        name: 'newPosition',
+        message: 'Would you like to add another position?',
+        default: true,
+        when: (answer) => {
+            if (answer.employeePosition === 'Engineer') {
+                return true;
+            } else if (answer.newPosition === true) {
+                return true; 
+            } else {
+                return false;
             }
         }
     },
