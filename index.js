@@ -1,4 +1,5 @@
 const fs = require('fs')
+const generateHtml = require('./utils/generateIndexhtml')
 const inquirer = require('inquirer')
 const Engineer = require('./lib/Engineer')
 const Manager = require('./lib/Manager')
@@ -8,28 +9,7 @@ const Employee = require('./lib/Employee')
 
 const questions = [
 
-    // {
-    //     type: 'list',
-    //     name: 'employeePosition',
-    //     message: 'What employee position would you like to add?',
-    //     choices: ['Manager', 'Engineer', 'Employee', 'Intern'],
-    //     when: ({ employeePosition }) => {
-    //         if (employeePosition === 'Manager') {
-    //             return ({ 'managerName' })
-    //         } 
-    //         // else if (employeePosition === 'Engineer') {
-    //         //     return Engineer;
-    //         // } else if (employeePosition === 'Employee') {
-    //         //     return Employee;
-    //         // } else if (employeePosition === 'Intern') {
-    //         //     return Intern;
-    //         // } 
-    //         else {
-    //             console.log('Please provide a position')
-    //         }
-    //     }
-    // },
-
+   
     //Manager name
     {
         type: 'input',
@@ -110,7 +90,7 @@ const questions = [
             type: 'list',
             name: 'employeePosition',
             message: 'What employee position would you like to add?',
-            choices: ['Engineer', 'Intern'],
+            choices: ['Engineer', 'Intern', 'Quit'],
             validate: ({ newPosition }) => {
                 if (newPosition) {
                     return true;
@@ -237,9 +217,42 @@ const questions = [
 
 ];
 
-function init() {
+
+// const writeToFile = data = {
+//     let newData = generateIndexhtml(data)
+//     fs.writeFile('./dist/index.html', newData, function (error) {
+//         if (error) {
+//             return console.log(error);
+//         } else {
+//             console.log("Your index html was created friend!")
+//         }
+//     })
+// }
+
+
+const init = () => {
     inquirer
         .prompt(questions)
+    .then (data => {
+        return data;
+    })
 }
 
+
+
 init()
+    .then(index => {
+        return writeToFile(index)
+    })
+
+
+// const askChoiceQuestions = () => {
+//     prompt(questions).then(({ name })) => {
+//         switch (name) {
+//             case 'input'
+
+//             askChoiceQuestions();
+//             break;
+//         }
+//     });
+// }
