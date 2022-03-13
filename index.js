@@ -214,7 +214,7 @@ askRoleQuestions = () => {
 
 // writes the file to html
 const writeToFile = data => {
-    let newData = generateHtml(data)
+    let newData = generateHtml(JSON.stringify(data))
     fs.writeFile('./dist/index.html', newData, function (error) {
         if (error) {
             return console.log(error);

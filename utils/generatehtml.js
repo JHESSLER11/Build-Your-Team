@@ -3,6 +3,8 @@
 
 
 const generateHtml = newData => {
+    JSON.parse(newData);
+
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -13,7 +15,8 @@ const generateHtml = newData => {
     <title>The best Team Builder</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     </head>
-    <h1>${newData.employee}<h1>
+    <h1>The Best Team Ever<h1>
+    <h2>${newData}<h2>
     <body>
     
     </body>
