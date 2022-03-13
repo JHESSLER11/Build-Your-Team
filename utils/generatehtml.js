@@ -16,7 +16,7 @@ const generateHtml = newData => {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     </head>
     <h1>The Best Team Ever<h1>
-    <h2>${getID()}<h2>
+    <h2>${newData}<h2>
     <body>
     
     </body>
