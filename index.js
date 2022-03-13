@@ -129,13 +129,9 @@ const internQuestions = [
 // Intern name
 {
     type: 'input',
-    name: 'intern',
+    name: 'internName',
     message: 'What is the Name of the Intern?',
-    when: (answer) => {
-        if (answer.employeePosition === 'Intern') {
-            return true;
-        }
-    }
+    
 },
 
 // Intern ID
@@ -143,11 +139,7 @@ const internQuestions = [
     type: 'input',
     name: 'internID',
     message: 'What is the employee ID of the Intern?',
-    when: (answer) => {
-        if (answer.employeePosition === 'Intern') {
-            return true;
-        }
-    }
+    
 },
 
 // Intern email
@@ -155,11 +147,7 @@ const internQuestions = [
     type: 'input',
     name: 'internEmail',
     message: 'What is the email of the Intern?',
-    when: (answer) => {
-        if (answer.employeePosition === 'Intern') {
-            return true;
-        }
-    }
+    
 },
 
 // Intern school
@@ -167,30 +155,26 @@ const internQuestions = [
     type: 'input',
     name: 'internSchool',
     message: 'What School did the intern attend?',
-    when: (answer) => {
-        if (answer.employeePosition === 'Intern') {
-            return true;
-        }
-    }
+    
 },
 
 ]
 
 
-const employeeType = [
+const employeePosition = [
     {
         type: 'list',
         name: 'employeePosition',
         message: 'What employee position would you like to add?',
-        choices: ['engineer', 'intern', 'finalize team'],
+        choices: ['Engineer', 'Intern', 'Finalize team'],
     }
 ]
 
 //manager questions
 
 askRoleQuestions = () => {
-    inquirer.prompt(employeeType).then((data) => {
-        if (data.employeePosition === 'engineer') {
+    inquirer.prompt(employeePosition).then((data) => {
+        if (data.employeePosition === 'Engineer') {
             inquirer.prompt(EngineerQuestions).then((engineerData) => {
                 engineerP = new Engineer(
                     engineerData.engineer,
@@ -200,7 +184,20 @@ askRoleQuestions = () => {
                 )
                 employee.push(engineerP)
                 console.log(employee)
-
+                askRoleQuestions()
+            })
+        }
+        if (data.employeePosition === 'Intern') {
+            inquirer.prompt(internQuestions).then((internData) => {
+                internP = new Intern(
+                    internData.internName,
+                    internData.internID,
+                    internData.internEmail,
+                    internData.internSchool
+                )
+                employee.push(internP)
+                console.log(employee)
+                askRoleQuestions()
             })
         }
     })
