@@ -96,11 +96,7 @@ const EngineerQuestions = [
         type: 'input',
         name: 'engineer',
         message: 'What is the name of the Engineer?',
-        when: (answer) => {
-            if (answer.employeePosition === 'Engineer') {
-                return true;
-            }
-        }
+        
     },
     
     // engineer ID
@@ -108,11 +104,7 @@ const EngineerQuestions = [
         type: 'input',
         name: 'engineerID',
         message: 'What is the employee ID of the Engineer?',
-        when: (answer) => {
-            if (answer.employeePosition === 'Engineer') {
-                return true;
-            }
-        }
+       
     },
     
     // engineer email
@@ -120,11 +112,7 @@ const EngineerQuestions = [
         type: 'input',
         name: 'engineerEmail',
         message: 'What is the email address of the engineer?',
-        when: (answer) => {
-            if (answer.employeePosition === 'Engineer') {
-                return true;
-            }
-        }
+       
     },
     
     // engineer github
@@ -132,60 +120,9 @@ const EngineerQuestions = [
         type: 'input',
         name: 'engineerGit',
         message: 'What is the GitHub username of the engineer?',
-        when: (answer) => {
-            if (answer.employeePosition === 'Engineer') {
-                return true;
-            }
-        }
+        
     },
     
-    // Intern name
-    {
-        type: 'input',
-        name: 'intern',
-        message: 'What is the Name of the Intern?',
-        when: (answer) => {
-            if (answer.employeePosition === 'Intern') {
-                return true;
-            }
-        }
-    },
-    
-    // Intern ID
-    {
-        type: 'input',
-        name: 'internID',
-        message: 'What is the employee ID of the Intern?',
-        when: (answer) => {
-            if (answer.employeePosition === 'Intern') {
-                return true;
-            }
-        }
-    },
-    
-    // Intern email
-    {
-        type: 'input',
-        name: 'internEmail',
-        message: 'What is the email of the Intern?',
-        when: (answer) => {
-            if (answer.employeePosition === 'Intern') {
-                return true;
-            }
-        }
-    },
-    
-    // Intern school
-    {
-        type: 'input',
-        name: 'internSchool',
-        message: 'What School did the intern attend?',
-        when: (answer) => {
-            if (answer.employeePosition === 'Intern') {
-                return true;
-            }
-        }
-    },
   
 ];
 const internQuestions = [
@@ -245,7 +182,7 @@ const employeeType = [
         type: 'list',
         name: 'employeePosition',
         message: 'What employee position would you like to add?',
-        choices: ['Engineer', 'Intern', 'Finalize team'],
+        choices: ['engineer', 'intern', 'finalize team'],
     }
 ]
 
@@ -253,13 +190,13 @@ const employeeType = [
 
 askRoleQuestions = () => {
     inquirer.prompt(employeeType).then((data) => {
-        if (data.employeeType === 'Engineer') {
+        if (data.employeePosition === 'engineer') {
             inquirer.prompt(EngineerQuestions).then((engineerData) => {
                 engineerP = new Engineer(
                     engineerData.engineer,
                     engineerData.engineerID,
                     engineerData.engineerEmail,
-                    engineerData.engineerOffice
+                    engineerData.engineerGit
                 )
                 employee.push(engineerP)
                 console.log(employee)
