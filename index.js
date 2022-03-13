@@ -212,6 +212,7 @@ askRoleQuestions = () => {
     })
 }
 
+
 // writes the file to html
 const writeToFile = data => {
     let newData = generateHtml(JSON.stringify(data))
@@ -228,21 +229,44 @@ const writeToFile = data => {
 const init = () => {
     inquirer
     .prompt(managerQuestions).then((answer) => {
-            position = new Manager(
-                answer.managerName,
-                answer.managerID,
-                answer.managerEmail,
-                answer.managerOffice
+        position = new Manager(
+            answer.managerName,
+            answer.managerID,
+            answer.managerEmail,
+            answer.managerOffice
             )
             employees.push(position)
             console.log(employees)
             askRoleQuestions()
-    });
+        });
+        
+    }
     
+    
+const createHtml = (employees) => {
+
+    const MangerHTML = (manager) => {
+
+        return `
+        <div class="row">
+        <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">${manager.name}</span>
+          <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+    </div>
+        `
+    }
 }
-
-
-
-// init call
+    
+    // init call
 init()
  
