@@ -1,15 +1,16 @@
 const fs = require('fs');
-const generateHtml = require('./utils/generateIndexhtml');
+const generateHtml = require('./utils/generatehtml');
 const inquirer = require('inquirer');
 const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 const Employee = require('./lib/Employee');
 
-const employee = []
-console.log(employee)
+//stores input employees
+const employees = []
+console.log(employees)
 
-
+//manager questions
 const managerQuestions = [
 
        //Manager name
@@ -88,7 +89,7 @@ const managerQuestions = [
     },
 
 ]
-
+//engineer questions
 const EngineerQuestions = [
 
     // engineer name
@@ -125,6 +126,7 @@ const EngineerQuestions = [
     
   
 ];
+// intern questions
 const internQuestions = [
 // Intern name
 {
@@ -160,7 +162,7 @@ const internQuestions = [
 
 ]
 
-
+// employee positions question
 const employeePosition = [
     {
         type: 'list',
@@ -170,10 +172,10 @@ const employeePosition = [
     }
 ]
 
-//manager questions
-
+// function that controls the questions
 askRoleQuestions = () => {
     inquirer.prompt(employeePosition).then((data) => {
+        // engineer questions
         if (data.employeePosition === 'Engineer') {
             inquirer.prompt(EngineerQuestions).then((engineerData) => {
                 engineerP = new Engineer(
@@ -182,11 +184,13 @@ askRoleQuestions = () => {
                     engineerData.engineerEmail,
                     engineerData.engineerGit
                 )
-                employee.push(engineerP)
-                console.log(employee)
+                employees.push(engineerP)
+                console.log(employees)
+                //goes back through questions
                 askRoleQuestions()
             })
         }
+        //intern questions
         if (data.employeePosition === 'Intern') {
             inquirer.prompt(internQuestions).then((internData) => {
                 internP = new Intern(
@@ -195,15 +199,20 @@ askRoleQuestions = () => {
                     internData.internEmail,
                     internData.internSchool
                 )
-                employee.push(internP)
-                console.log(employee)
+                employees.push(internP)
+                console.log(employees)
+                //goes back through questions
                 askRoleQuestions()
             })
+        }
+        // finish team
+        if (data.employeePosition === 'Finalize team') {
+            writeToFile(employees)
         }
     })
 }
 
-
+// writes the file to html
 const writeToFile = data => {
     let newData = generateHtml(data)
     fs.writeFile('./dist/index.html', newData, function (error) {
@@ -215,7 +224,7 @@ const writeToFile = data => {
     })
 }
 
-
+// init
 const init = () => {
     inquirer
     .prompt(managerQuestions).then((answer) => {
@@ -225,24 +234,15 @@ const init = () => {
                 answer.managerEmail,
                 answer.managerOffice
             )
-            employee.push(position)
-            console.log(employee)
+            employees.push(position)
+            console.log(employees)
             askRoleQuestions()
     });
     
 }
-// const init = () => {
-//     inquirer
-//         .prompt(questions)
-//     .then (data => {
-//         return data;
-//     })
-// }
 
 
 
+// init call
 init()
-    // .then(index => {
-    //     return writeToFile(index)
-    // })
-
+ 
