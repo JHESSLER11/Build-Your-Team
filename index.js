@@ -89,7 +89,7 @@ const managerQuestions = [
 
 ]
 
-const questions = [
+const roleQuestions = [
 
    
     // type of team member to add
@@ -97,14 +97,8 @@ const questions = [
         type: 'list',
         name: 'employeePosition',
         message: 'What employee position would you like to add?',
-        choices: ['Engineer', 'Intern', 'Quit'],
-        validate: ({ newPosition }) => {
-            if (newPosition) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+        choices: ['Engineer', 'Intern', 'Finalize team'],
+        
     },
     
     // engineer name
@@ -151,22 +145,6 @@ const questions = [
         when: (answer) => {
             if (answer.employeePosition === 'Engineer') {
                 return true;
-            }
-        }
-    },
-    
-    {
-        type: 'confirm',
-        name: 'newPosition',
-        message: 'Would you like to add another position?',
-        default: true,
-        when: (answer) => {
-            if (answer.employeePosition === 'Engineer') {
-                return true;
-            } else if (answer.newPosition === true) {
-                return true; 
-            } else {
-                return false;
             }
         }
     },
@@ -221,27 +199,53 @@ const questions = [
   
 ];
 
-
+//manager questions
 const askQuestions = () => {
-    inquirer
-        .prompt(managerQuestions).then((answer) => {
-                position = new Manager(
-                    answer.managerName,
-                    answer.managerID,
-                    answer.managerEmail,
-                    answer.managerOffice
+   inquirer.prompt(managerQuestions).then(({ managerName, managerID, managerEmail, managerOffice }) => {
+        switch (managerName, managerID, managerEmail, managerOffice) {
+            case managerName:
+            case managerID:
+            case managerEmail:
+            case managerOffice:
+                manager = new Manager (
+                    managerName,
+                    managerID,
+                    managerEmail,
+                    managerOffice
                 )
-                employee.push(position)
+                employee.push(manager)
                 console.log(employee)
-            });
-
-            // switch (input) {
-            //     case 'managerName':
-            //     case 'managerID':
-                
-            //     break;
+                break;
         
-            // }
+            default:
+                break;
+        }
+    })
+}
+ 
+askRoleQuestions = () => {
+    inquirer.prompt(roleQuestions).then((data) => {
+        switch (data) {
+            case data.engineer:
+            case data.engineerID:
+            case data.engineerGit:
+            case data.engineerOffice:
+                engineer = new Engineer (
+                    data.engineer,
+                    data.engineerID,
+                    data.engineerGit,
+                    data.engineerOffice
+                )
+                    employee.push(engineer)
+                        console.log(employee)
+                        break;
+                        
+            default:
+                break;
+        }
+                            
+
+    })
 }
 
 
@@ -258,7 +262,21 @@ const writeToFile = data => {
 
 
 const init = () => {
-    askQuestions()
+    // inquirer
+    // .prompt(managerQuestions).then((answer) => {
+    //         position = new Manager(
+    //             answer.managerName,
+    //             answer.managerID,
+    //             answer.managerEmail,
+    //             answer.managerOffice
+    //         )
+    //         employee.push(position)
+    //         console.log(employee)
+    // });
+        askQuestions()
+        .then (() => {
+            askRoleQuestions() }) 
+
 }
 // const init = () => {
 //     inquirer
@@ -271,7 +289,7 @@ const init = () => {
 
 
 init()
-    .then(index => {
-        return writeToFile(index)
-    })
+    // .then(index => {
+    //     return writeToFile(index)
+    // })
 
