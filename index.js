@@ -89,18 +89,8 @@ const managerQuestions = [
 
 ]
 
-const roleQuestions = [
+const EngineerQuestions = [
 
-   
-    // type of team member to add
-    {
-        type: 'list',
-        name: 'employeePosition',
-        message: 'What employee position would you like to add?',
-        choices: ['Engineer', 'Intern', 'Finalize team'],
-        
-    },
-    
     // engineer name
     {
         type: 'input',
@@ -198,53 +188,84 @@ const roleQuestions = [
     },
   
 ];
+const internQuestions = [
+// Intern name
+{
+    type: 'input',
+    name: 'intern',
+    message: 'What is the Name of the Intern?',
+    when: (answer) => {
+        if (answer.employeePosition === 'Intern') {
+            return true;
+        }
+    }
+},
+
+// Intern ID
+{
+    type: 'input',
+    name: 'internID',
+    message: 'What is the employee ID of the Intern?',
+    when: (answer) => {
+        if (answer.employeePosition === 'Intern') {
+            return true;
+        }
+    }
+},
+
+// Intern email
+{
+    type: 'input',
+    name: 'internEmail',
+    message: 'What is the email of the Intern?',
+    when: (answer) => {
+        if (answer.employeePosition === 'Intern') {
+            return true;
+        }
+    }
+},
+
+// Intern school
+{
+    type: 'input',
+    name: 'internSchool',
+    message: 'What School did the intern attend?',
+    when: (answer) => {
+        if (answer.employeePosition === 'Intern') {
+            return true;
+        }
+    }
+},
+
+]
+
+
+const employeeType = [
+    {
+        type: 'list',
+        name: 'employeePosition',
+        message: 'What employee position would you like to add?',
+        choices: ['Engineer', 'Intern', 'Finalize team'],
+    }
+]
 
 //manager questions
-const askQuestions = () => {
-   inquirer.prompt(managerQuestions).then(({ managerName, managerID, managerEmail, managerOffice }) => {
-        switch (managerName, managerID, managerEmail, managerOffice) {
-            case managerName:
-            case managerID:
-            case managerEmail:
-            case managerOffice:
-                manager = new Manager (
-                    managerName,
-                    managerID,
-                    managerEmail,
-                    managerOffice
-                )
-                employee.push(manager)
-                console.log(employee)
-                break;
-        
-            default:
-                break;
-        }
-    })
-}
- 
-askRoleQuestions = () => {
-    inquirer.prompt(roleQuestions).then((data) => {
-        switch (data) {
-            case data.engineer:
-            case data.engineerID:
-            case data.engineerGit:
-            case data.engineerOffice:
-                engineer = new Engineer (
-                    data.engineer,
-                    data.engineerID,
-                    data.engineerGit,
-                    data.engineerOffice
-                )
-                    employee.push(engineer)
-                        console.log(employee)
-                        break;
-                        
-            default:
-                break;
-        }
-                            
 
+askRoleQuestions = () => {
+    inquirer.prompt(employeeType).then((data) => {
+        if (data.employeeType === 'Engineer') {
+            inquirer.prompt(EngineerQuestions).then((engineerData) => {
+                engineerP = new Engineer(
+                    engineerData.engineer,
+                    engineerData.engineerID,
+                    engineerData.engineerEmail,
+                    engineerData.engineerOffice
+                )
+                employee.push(engineerP)
+                console.log(employee)
+
+            })
+        }
     })
 }
 
@@ -262,21 +283,19 @@ const writeToFile = data => {
 
 
 const init = () => {
-    // inquirer
-    // .prompt(managerQuestions).then((answer) => {
-    //         position = new Manager(
-    //             answer.managerName,
-    //             answer.managerID,
-    //             answer.managerEmail,
-    //             answer.managerOffice
-    //         )
-    //         employee.push(position)
-    //         console.log(employee)
-    // });
-        askQuestions()
-        .then (() => {
-            askRoleQuestions() }) 
-
+    inquirer
+    .prompt(managerQuestions).then((answer) => {
+            position = new Manager(
+                answer.managerName,
+                answer.managerID,
+                answer.managerEmail,
+                answer.managerOffice
+            )
+            employee.push(position)
+            console.log(employee)
+            askRoleQuestions()
+    });
+    
 }
 // const init = () => {
 //     inquirer
