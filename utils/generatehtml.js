@@ -11,21 +11,42 @@ const createHtml = (employees) => {
             <div>
                 <p>ID: ${manager.getId()}</p>
                 <a href="mailto:${manager.getEmail()}">Email: ${manager.getEmail()}</a>
-                <p> Office number: ${manager.getOffice()}</P>
+                <p> Office number: ${manager.getOfficeNumber()}</P>
             </div>
         </div>
-
-
         `
     }
 
-    const something = [];
+    const engineerHTML = (engineer) => {
 
-    something.push(employees 
+        return `
+       
+        <div>
+            <div>
+                <h2>Engineer: ${engineer.getName()}<h2>
+            </div>
+            <div>
+                <p>ID: ${engineer.getId()}</p>
+                <a href="mailto:${engineer.getEmail()}">Email: ${engineer.getEmail()}</a>
+                <p><a href="https://github.com/${engineer.getGithub()}">GitHub: ${engineer.getGithub()}</a><p>
+            </div>
+        </div>
+        `
+    }
+
+    const pageHtml = [];
+
+    pageHtml.push(employees 
         .filter(employee => employee.getRole() === 'Manager')
-        .map((manager) => managerHTML(manager)))
+        .map((manager) => managerHTML(manager)));
+    
+    pageHtml.push(employees 
+        .filter(employee => employee.getRole() === 'Engineer')
+        .map((engineer) => engineerHTML(engineer))
+        .join(""))
 
-    return something.join("")
+
+    return pageHtml.join("")
 }
 
 
