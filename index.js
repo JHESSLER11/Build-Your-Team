@@ -4,7 +4,7 @@ const inquirer = require('inquirer');
 const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
-const Employee = require('./lib/Employee');
+const createHTML = require('./utils/generatehtml')
 
 //stores input employees
 const employees = []
@@ -215,8 +215,7 @@ askRoleQuestions = () => {
 
 // writes the file to html
 const writeToFile = data => {
-    let newData = generateHtml(JSON.stringify(data))
-    fs.writeFile('./dist/index.html', newData, function (error) {
+    fs.writeFile('./dist/index.html', createHTML(employees), function (error) {
         if (error) {
             return console.log(error);
         } else {
@@ -241,31 +240,7 @@ const init = () => {
         });
         
     }
-    
-    
-const createHtml = (employees) => {
-
-    const MangerHTML = (manager) => {
-
-        return `
-        <div class="row">
-        <div class="col s12 m6">
-        <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title">${manager.name}</span>
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
-        </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-          <a href="#">This is a link</a>
-        </div>
-      </div>
-    </div>
-    </div>
-        `
-    }
-}
+     
     
     // init call
 init()
