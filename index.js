@@ -4,7 +4,7 @@ const inquirer = require('inquirer');
 const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
-const createHTML = require('./utils/generatehtml')
+
 
 //stores input employees
 const employees = []
@@ -174,9 +174,9 @@ const employeePosition = [
 
 // function that controls the questions
 askRoleQuestions = () => {
-    inquirer.prompt(employeePosition).then((data) => {
+    inquirer.prompt(employeePosition).then((newData) => {
         // engineer questions
-        if (data.employeePosition === 'Engineer') {
+        if (newData.employeePosition === 'Engineer') {
             inquirer.prompt(EngineerQuestions).then((engineerData) => {
                 engineerP = new Engineer(
                     engineerData.engineer,
@@ -191,7 +191,7 @@ askRoleQuestions = () => {
             })
         }
         //intern questions
-        if (data.employeePosition === 'Intern') {
+        if (newData.employeePosition === 'Intern') {
             inquirer.prompt(internQuestions).then((internData) => {
                 internP = new Intern(
                     internData.internName,
@@ -206,7 +206,7 @@ askRoleQuestions = () => {
             })
         }
         // finish team
-        if (data.employeePosition === 'Finalize team') {
+        if (newData.employeePosition === 'Finalize team') {
             writeToFile(employees)
         }
     })
@@ -214,8 +214,8 @@ askRoleQuestions = () => {
 
 
 // writes the file to html
-const writeToFile = data => {
-    fs.writeFile('./dist/index.html', generateHtml(data), (error)  => {
+const writeToFile = newData => {
+    fs.writeFile('./dist/index.html', generateHtml(newData), error => {
         if (error) {
             return console.log(error);
         } else {

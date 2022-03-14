@@ -75,8 +75,8 @@ const createHtml = (employees) => {
 
 
 
-const generateHtml = (data) => {
-    console.log(employees)
+const generateHtml = (newData) => {
+
 
     return `
     <!DOCTYPE html>
@@ -90,13 +90,12 @@ const generateHtml = (data) => {
     </head>
     <body>
     <h1>The Best Team Ever<h1>
-    <h2>${createHtml(data)}<h2>
+    <h2>${createHtml(newData)}<h2>
     
     </body>
     </html>
-    `;
+    `
 }
 
 
 module.exports = generateHtml;
-module.exports = createHtml;
