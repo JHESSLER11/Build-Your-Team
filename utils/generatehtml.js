@@ -3,21 +3,19 @@ const createHtml = (employees) => {
     const managerHTML = (manager) => {
 
         return `
-        <div class="row">
-        <div class="col s12 m6">
-        <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title">${manager.getName()}</span>
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
+       
+        <div>
+            <div>
+                <h2>Manager: ${manager.getName()}<h2>
+            </div>
+            <div>
+                <p>ID: ${manager.getId()}</p>
+                <a href="mailto:${manager.getEmail()}">Email: ${manager.getEmail()}</a>
+                <p> Office number: ${manager.getOffice()}</P>
+            </div>
         </div>
-        <div class="card-action">
-          <a href="mailto:${manager.getEmail()}">This is a link</a>
-          <a href="#">This is a link</a>
-        </div>
-      </div>
-    </div>
-    </div>
+
+
         `
     }
 
