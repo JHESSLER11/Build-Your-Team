@@ -15,7 +15,7 @@ const createHtml = (employees) => {
             </div>
         </div>
         `
-    }
+    };
 
     const engineerHTML = (engineer) => {
 
@@ -32,7 +32,7 @@ const createHtml = (employees) => {
             </div>
         </div>
         `
-    }
+    };
 
     const internHTML = (intern) => {
 
@@ -49,7 +49,7 @@ const createHtml = (employees) => {
             </div>
         </div>
         `
-    }
+    };
     //
     const pageHtml = [];
 
@@ -75,8 +75,8 @@ const createHtml = (employees) => {
 
 
 
-const generateHtml = newData => {
-    //const data = JSON.parse(newData);
+const generateHtml = (data) => {
+    console.log(employees)
 
     return `
     <!DOCTYPE html>
@@ -88,9 +88,9 @@ const generateHtml = newData => {
     <title>The best Team Builder</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     </head>
-    <h1>The Best Team Ever<h1>
-    <h2>${newData}<h2>
     <body>
+    <h1>The Best Team Ever<h1>
+    <h2>${createHtml(data)}<h2>
     
     </body>
     </html>

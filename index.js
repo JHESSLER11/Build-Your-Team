@@ -215,7 +215,7 @@ askRoleQuestions = () => {
 
 // writes the file to html
 const writeToFile = data => {
-    fs.writeFile('./dist/index.html', createHTML(employees), "utf-8", (error)  => {
+    fs.writeFile('./dist/index.html', generateHtml(data), (error)  => {
         if (error) {
             return console.log(error);
         } else {
