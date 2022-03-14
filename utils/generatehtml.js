@@ -34,7 +34,25 @@ const createHtml = (employees) => {
         `
     }
 
+    const internHTML = (intern) => {
+
+        return `
+       
+        <div>
+            <div>
+                <h2>Intern: ${intern.getName()}<h2>
+            </div>
+            <div>
+                <p>ID: ${intern.getId()}</p>
+                <a href="mailto:${intern.getEmail()}">Email: ${intern.getEmail()}</a>
+                <p>School: ${intern.getSchool()}<p>
+            </div>
+        </div>
+        `
+    }
+    //
     const pageHtml = [];
+
 
     pageHtml.push(employees 
         .filter(employee => employee.getRole() === 'Manager')
@@ -43,7 +61,12 @@ const createHtml = (employees) => {
     pageHtml.push(employees 
         .filter(employee => employee.getRole() === 'Engineer')
         .map((engineer) => engineerHTML(engineer))
-        .join(""))
+        .join(""));
+
+    pageHtml.push(employees 
+        .filter(employee => employee.getRole() === 'Intern')
+        .map((intern) => internHTML(intern))
+        .join(""));
 
 
     return pageHtml.join("")
