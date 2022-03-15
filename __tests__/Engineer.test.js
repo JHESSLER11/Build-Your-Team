@@ -5,13 +5,15 @@ describe('Engineer Class', () => {
         const engineer = new Engineer()
         expect(engineer).toBeInstanceOf(Engineer);
     })
-    test('name property returns correct name', () => {
-        const employee = new Employee('bob', '1', 'hessler@email.com');
-        const employeeName = employee.name;
-        const employeeId = employee.id;
-        const employeeEmail = employee.email
-        expect(employeeName).toEqual('bob')
-        expect(employeeId).toEqual('1')
-        expect(employeeEmail).toEqual('hessler@email.com')
+    test('name, id, email, and Github run correctly', () => {
+        const engineer = new Engineer('sam', '2', 'sam@email.com', 'https://github.com/sam');
+        const engineerName = engineer.name;
+        const engineerID = engineer.id;
+        const engineerEmail = engineer.email;
+        const engineerGit = engineer.Github
+        expect(engineerName).toEqual('sam')
+        expect(engineerID).toEqual('2')
+        expect(engineerEmail).toEqual('sam@email.com')
+        expect(engineerGit).toEqual('https://github.com/sam')
     })
   })
