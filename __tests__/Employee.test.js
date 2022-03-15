@@ -5,7 +5,7 @@ describe('Employee Class', () => {
         const employee = new Employee()
         expect(employee).toBeInstanceOf(Employee);
     })
-    test('name property returns correct name', () => {
+    test('name, id, and email return correct properties', () => {
         const employee = new Employee('bob', '1', 'hessler@email.com');
         const employeeName = employee.name;
         const employeeId = employee.id;
