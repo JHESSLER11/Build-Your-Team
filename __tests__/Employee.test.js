@@ -6,9 +6,12 @@ describe('Employee Class', () => {
         expect(employee).toBeInstanceOf(Employee);
     })
     test('name property returns correct name', () => {
-        const employee = new Employee('bob');
+        const employee = new Employee('bob', '1', 'hessler@email.com');
         const employeeName = employee.name;
+        const employeeId = employee.id;
+        const employeeEmail = employee.email
         expect(employeeName).toEqual('bob')
-
+        expect(employeeId).toEqual('1')
+        expect(employeeEmail).toEqual('hessler@email.com')
     })
   })

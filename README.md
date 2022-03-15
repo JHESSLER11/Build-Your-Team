@@ -5,7 +5,7 @@
   # Auto Build Your Team!
 
   ## Project Description 
-  The project helps anyone looking to produce a team with a manager, engineer, and intern. Once the questions are answered the information is uploaded into an      html file for use by the user. 
+  The project helps anyone looking to produce a team with a manager, engineer, and intern. Once the questions are answered the information is uploaded into an html file for use by the user. 
 
   ## Table of Contents
   - [Instillation](#Instillation-Requirements)
@@ -28,7 +28,7 @@
   Contributions can be done by forking the project.
 
   ## Test 
-  Test were run to debug the project. The test are availbile if the project is forked or downloaded. 
+  Test were run to debug the project. The test are available if the project is forked or downloaded. 
 
   ## Contact Information 
   For any questions regarding this project please contact me at the following email: jhessler11@gmail.com
