@@ -4,15 +4,15 @@ const createHtml = (employees) => {
 
         return `
        
-        <div>
-            <div>
-                <h2>Manager: ${manager.getName()}<h2>
-            </div>
-            <div>
-                <p>ID: ${manager.getId()}</p>
-                <a href="mailto:${manager.getEmail()}">Email: ${manager.getEmail()}</a>
-                <p> Office number: ${manager.getOfficeNumber()}</P>
-            </div>
+        <div class="card">
+                <div class="card-header">
+                    <h2 class="card-header-title has-background-primary-dark">Manager: ${manager.getName()}<h2>
+                </div>
+                <div class="card-content">
+                    <p class="content">ID: ${manager.getId()}</p>
+                    <p class="content"><a href="mailto:${manager.getEmail()}">Email: ${manager.getEmail()}</a></p>
+                    <p class="content"> Office number: ${manager.getOfficeNumber()}</P>
+                </div>
         </div>
         `
     };
@@ -21,9 +21,9 @@ const createHtml = (employees) => {
 
         return `
        
-        <div>
+        <div class='card'>
             <div>
-                <h2>Engineer: ${engineer.getName()}<h2>
+                <h2 class="has-background-primary-dark">Engineer: ${engineer.getName()}<h2>
             </div>
             <div>
                 <p>ID: ${engineer.getId()}</p>
@@ -38,9 +38,9 @@ const createHtml = (employees) => {
 
         return `
        
-        <div>
+        <div class='card'>
             <div>
-                <h2>Intern: ${intern.getName()}<h2>
+                <h2 class="has-background-primary-dark">Intern: ${intern.getName()}<h2>
             </div>
             <div>
                 <p>ID: ${intern.getId()}</p>
@@ -89,7 +89,7 @@ const generateHtml = (newData) => {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     </head>
     <body>
-    <h1>The Best Team Ever<h1>
+    <h1 class="title is-1 has-text-white has-background-link-dark has-text-centered p-1">The Best Team Ever!<h1>
     <h2>${createHtml(newData)}<h2>
     
     </body>
