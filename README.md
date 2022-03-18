@@ -5,7 +5,7 @@
   # Auto Build Your Team!
 
   ## Project Description 
-  The project helps anyone looking to produce a team with a manager, engineer, and intern. Once the questions are answered the information is uploaded into an html file for use by the user. 
+  The project helps anyone looking to produce a team with a manager, engineer, and intern. Once the questions are answered the information is uploaded    into an html file for use by the user. 
 
   ## Table of Contents
   - [Instillation](#Instillation-Requirements)
@@ -19,7 +19,7 @@
   and npm i, npm i jest, npm i inquirer
 
   ## Instructions of use
-  Project can be used by anyone looking to make a good README.
+  Project can be used by anyone looking to build a team in html.
 
   ## License
   MIT
@@ -36,7 +36,14 @@
   
   ## Video
   
-  https://user-images.githubusercontent.com/28634482/157774534-e2afa7aa-4635-46d2-9c08-e332301646d8.mp4
+  https://user-images.githubusercontent.com/28634482/159097964-0bc22a4b-9e90-45ea-8283-f68ead7f39f2.mp4
+
 
   ## Screen Shot of questions and answers
-  ![Alt text](https://github.com/JHESSLER11/README-Generator-For-Professionals/blob/main/assets/images/questions%20and%20answers.png)
+  ![Alt text](https://github.com/JHESSLER11/Build-Your-Team/blob/main/assets/images/Screen%20Shot%20of%20answers.png)
+  
+  ## Screen shot of Passed Test
+  ![Alt text](https://github.com/JHESSLER11/Build-Your-Team/blob/main/assets/images/Screen%20Shot%20of%20test.png)
+  
+  ## Screen shot of deployed application
+  ![Alt text](https://github.com/JHESSLER11/Build-Your-Team/blob/main/assets/images/Screen%20Shot%20of%20deployed%20application.png)
