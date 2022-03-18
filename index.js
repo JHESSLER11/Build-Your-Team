@@ -7,8 +7,7 @@ const Intern = require('./lib/Intern');
 
 
 //stores input employees
-const employees = []
-console.log(employees)
+const employees = [];
 
 //manager questions
 const managerQuestions = [

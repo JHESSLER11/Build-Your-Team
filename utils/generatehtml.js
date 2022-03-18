@@ -30,7 +30,7 @@ const createHtml = (employees) => {
             <div class="card-content">
                 <p class="content m-2 box has-text-black">ID: ${engineer.getId()}</p>
                 <p class="content m-2 box has-text-black"><a href="mailto:${engineer.getEmail()}">Email: ${engineer.getEmail()}</a></p>
-                <p class="content m-2 box has-text-black"><a href="https://github.com/${engineer.getGithub()}">GitHub: ${engineer.getGithub()}</a><p>
+                <p class="content m-2 box has-text-black"><a href="https://github.com/${engineer.getGithub()}" target="_blank">GitHub: ${engineer.getGithub()}</a><p>
             </div>
         </div>
         `
