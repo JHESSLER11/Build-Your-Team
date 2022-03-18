@@ -1,12 +1,14 @@
-const createHtml = (employees) => {
 
+// generates html elements for position selected in prompts.
+const createHtml = (employees) => {
+    //creates manager card
     const managerHTML = (manager) => {
 
         return `
        
         <div class="card column">
                 <div class="card-header">
-                    <h2 class="card-header-title has-background-primary-dark">Manager: ${manager.getName()}<h2>
+                    <h2 class="card-header-title has-background-primary-dark has-text-white">Manager: ${manager.getName()}<h2>
                 </div>
                 <div class="card-content">
                     <p class="content m-2 box has-text-black">ID: ${manager.getId()}</p>
@@ -16,14 +18,14 @@ const createHtml = (employees) => {
         </div>
         `
     };
-
+    // creates engineer card
     const engineerHTML = (engineer) => {
 
         return `
        
         <div class="card column">
             <div class="card-header">
-                <h2 class="card-header-title has-background-link-dark">Engineer: ${engineer.getName()}<h2>
+                <h2 class="card-header-title has-background-link-dark has-text-white">Engineer: ${engineer.getName()}<h2>
             </div>
             <div class="card-content">
                 <p class="content m-2 box has-text-black">ID: ${engineer.getId()}</p>
@@ -33,14 +35,14 @@ const createHtml = (employees) => {
         </div>
         `
     };
-
+    // creates intern card.
     const internHTML = (intern) => {
 
         return `
        
         <div class="card column">
             <div "card-header">
-                <h2 class="card-header-title has-background-info-dark">Intern: ${intern.getName()}<h2>
+                <h2 class="card-header-title has-background-info-dark has-text-white">Intern: ${intern.getName()}<h2>
             </div>
             <div "card-content">
                 <p class="content m-2 box has-text-black">ID: ${intern.getId()}</p>
@@ -53,16 +55,16 @@ const createHtml = (employees) => {
     //
     const pageHtml = [];
 
-
+    // filters employees by manager and pulls out any mangers a places them in a new array
     pageHtml.push(employees 
         .filter(employee => employee.getRole() === 'Manager')
         .map((manager) => managerHTML(manager)));
-    
+    // filters employees by engineer and pulls out any engineers and places them in a new array
     pageHtml.push(employees 
         .filter(employee => employee.getRole() === 'Engineer')
         .map((engineer) => engineerHTML(engineer))
         .join(""));
-
+    // filters employees by intern and pulls out any interns and places them in a new array
     pageHtml.push(employees 
         .filter(employee => employee.getRole() === 'Intern')
         .map((intern) => internHTML(intern))
@@ -74,7 +76,7 @@ const createHtml = (employees) => {
 
 
 
-
+// generates the actual html pages
 const generateHtml = (newData) => {
 
 

@@ -185,7 +185,6 @@ askRoleQuestions = () => {
                     engineerData.engineerGit
                 )
                 employees.push(engineerP)
-                console.log(employees)
                 //goes back through questions
                 askRoleQuestions()
             })
@@ -200,7 +199,6 @@ askRoleQuestions = () => {
                     internData.internSchool
                 )
                 employees.push(internP)
-                console.log(employees)
                 //goes back through questions
                 askRoleQuestions()
             })
@@ -235,7 +233,6 @@ const init = () => {
             answer.managerOffice
             )
             employees.push(position)
-            console.log(employees)
             askRoleQuestions()
         });
         
